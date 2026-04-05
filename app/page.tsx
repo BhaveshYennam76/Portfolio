@@ -7,12 +7,15 @@ import PageLoadWrapper from "@/components/PageLoadWrapper";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
 
+import AboutEducation from "@/components/AboutEducation";
+
 export default function Home() {
   return (
     <SmoothScroll>
       <PageLoadWrapper>
-        <main className="bg-[#0a0a0a] min-h-screen">
+        <main className="bg-white min-h-screen">
           <ScrollyCanvas />
+          <AboutEducation />
           <Experience />
           <TechStack />
           <Projects />

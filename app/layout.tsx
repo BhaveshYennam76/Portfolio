@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased selection:bg-purple-500/30 selection:text-white`}>
+      <body className={`${inter.variable} antialiased`}>
         {/* Cinematic Grain Overlay */}
         <div className="fixed inset-0 z-[99999] pointer-events-none opacity-[0.03] animate-grain" 
              style={{ backgroundImage: 'url("https://res.cloudinary.com/dzv9rqshl/image/upload/v1624445915/grain_bg.png")' }} />

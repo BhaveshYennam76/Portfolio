@@ -11,9 +11,16 @@ const CustomCursor = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
-  // Main cursor position
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  // Smooth springs for the outer ring
+  const ringX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const ringY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+
+  // Faster spring for the center dot
+  const dotX = useSpring(mouseX, { stiffness: 400, damping: 28 });
+  const dotY = useSpring(mouseY, { stiffness: 400, damping: 28 });
 
   useEffect(() => {
     setMounted(true);
@@ -66,26 +73,30 @@ const CustomCursor = () => {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[999999]">
+    <div className="fixed inset-0 pointer-events-none z-[999999] mix-blend-difference">
       <AnimatePresence>
         {isVisible && (
           <>
-            {/* Trail Dots */}
-            {[...Array(TRAIL_COUNT)].map((_, i) => (
-              <TrailDot 
-                key={i} 
-                index={i} 
-                total={TRAIL_COUNT} 
-                mouseX={mouseX} 
-                mouseY={mouseY} 
-                isHovered={isHovered} 
-                isClicked={isClicked}
-              />
-            ))}
-
-            {/* Main Head - Bold White Dot */}
+            {/* Outer Ring - High Contrast Minimalist */}
             <motion.div
-              className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full z-[1000000] shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+              className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full z-[999999]"
+              style={{
+                x: ringX,
+                y: ringY,
+                translateX: "-50%",
+                translateY: "-50%",
+              }}
+              animate={{
+                scale: isClicked ? 0.8 : isHovered ? 2.5 : 1,
+                opacity: isHovered ? 0.3 : 1,
+                borderWidth: isHovered ? "2px" : "1px",
+              }}
+              transition={{ type: "spring", stiffness: 150, damping: 20 }}
+            />
+
+            {/* Center Pointer - Precision Dot */}
+            <motion.div
+              className="fixed top-0 left-0 w-1 h-1 bg-white rounded-full z-[1000000]"
               style={{
                 x: mouseX,
                 y: mouseY,
@@ -93,60 +104,15 @@ const CustomCursor = () => {
                 translateY: "-50%",
               }}
               animate={{
-                scale: isClicked ? 0.8 : isHovered ? 1.5 : 1,
-                backgroundColor: isClicked ? "rgba(255,255,255,0.8)" : "#ffffff",
+                scale: isClicked ? 0.5 : isHovered ? 0 : 1,
+                opacity: isHovered ? 0 : 1,
               }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              transition={{ type: "spring", stiffness: 400, damping: 28 }}
             />
           </>
         )}
       </AnimatePresence>
     </div>
-  );
-};
-
-const TrailDot = ({ 
-  index, 
-  total, 
-  mouseX, 
-  mouseY, 
-  isHovered,
-  isClicked
-}: { 
-  index: number; 
-  total: number; 
-  mouseX: any; 
-  mouseY: any; 
-  isHovered: boolean;
-  isClicked: boolean;
-}) => {
-  // Each dot has a different spring setting to create the 'snake' effect
-  const stiffness = 280 - (index * 25);
-  const damping = 30 + (index * 3);
-  
-  const x = useSpring(mouseX, { stiffness, damping });
-  const y = useSpring(mouseY, { stiffness, damping });
-
-  const size = 14 - (index * 1.4); 
-  const opacity = (1 - (index / total)) * 0.4; 
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 rounded-full bg-white/40 backdrop-blur-[1px]"
-      style={{
-        x,
-        y,
-        translateX: "-50%",
-        translateY: "-50%",
-        width: size,
-        height: size,
-        opacity: isClicked ? opacity * 0.5 : isHovered ? opacity * 2 : opacity,
-      }}
-      animate={{
-        scale: isClicked ? 0.9 : isHovered ? 1.8 : 1,
-      }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    />
   );
 };
 

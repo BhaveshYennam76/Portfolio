@@ -41,6 +41,18 @@ const Section = ({
         [15, 0]
     );
 
+    const textColor = useTransform(
+        scrollYProgress,
+        [0.7, 0.85],
+        ["#ffffff", "#000000"]
+    );
+
+    const subTextColor = useTransform(
+        scrollYProgress,
+        [0.7, 0.85],
+        ["rgba(255,255,255,0.8)", "rgba(0,0,0,0.7)"]
+    );
+
     const alignClass =
         align === "left"
             ? "items-start text-left"
@@ -54,8 +66,8 @@ const Section = ({
             className={`fixed top-0 left-0 w-full h-full pointer-events-none flex flex-col justify-center px-8 md:px-20 ${alignClass}`}
         >
             <motion.h2
-                style={{ scale: textScale, letterSpacing }}
-                className="text-4xl md:text-7xl font-bold tracking-tighter text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+                style={{ scale: textScale, letterSpacing, color: textColor }}
+                className="text-4xl md:text-7xl font-bold tracking-tighter"
             >
                 {text.split("").map((char, i) => (
                     <motion.span
@@ -91,13 +103,14 @@ const Section = ({
                             [start, start + 0.03],
                             [15, 0]
                         ),
+                        color: subTextColor,
                     }}
-                    className="text-xl md:text-2xl text-gray-300 mt-4 font-light tracking-wide max-w-2xl drop-shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+                    className="text-xl md:text-2xl mt-4 font-light tracking-wide max-w-2xl"
                 >
                     {subText}
                 </motion.p>
             )}
-            {/* Decorative line under text */}
+            {/* Decorative line under text - Dynamic B/W */}
             <motion.div
                 style={{
                     scaleX: useTransform(
@@ -105,8 +118,10 @@ const Section = ({
                         [start, start + 0.04, end - 0.02, end + 0.05],
                         [0, 1, 1, 0]
                     ),
+                    backgroundColor: textColor,
+                    opacity: 0.2,
                 }}
-                className="h-[1px] w-32 mt-6 bg-gradient-to-r from-transparent via-white/30 to-transparent origin-center"
+                className="h-[1px] w-32 mt-6 origin-center"
             />
         </motion.div>
     );

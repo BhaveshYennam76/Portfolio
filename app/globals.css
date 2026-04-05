@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #ffffff;
+  --foreground: #000000;
 }
 
 body {
@@ -10,31 +10,30 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
-  cursor: none;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - High Contrast */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.3));
-  border-radius: 3px;
+  background: #000000;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.5));
+  background: #1a1a1a;
 }
 
-/* Selection highlight */
+/* Selection highlight - Pure High Contrast */
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: white;
+  background: #000000;
+  color: #ffffff;
 }
 
 /* Film grain animation */
@@ -156,7 +155,7 @@ body {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, white 0%, rgba(139, 92, 246, 0.9) 50%, white 100%);
+  background: linear-gradient(90deg, #121212 0%, #666666 50%, #121212 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -164,9 +163,9 @@ body {
   animation: text-shimmer 4s linear infinite;
 }
 
-/* Smooth focus ring */
+/* Smooth focus ring - Professional Light */
 *:focus-visible {
-  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline: 2px solid rgba(18, 18, 18, 0.2);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -194,7 +193,6 @@ textarea,
 select,
 [role="button"] {
   transition: all 0.3s ease;
-  cursor: none;
 }
 
 /* Image smoothing */

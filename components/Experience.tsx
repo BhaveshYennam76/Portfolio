@@ -37,12 +37,12 @@ const lineVariants = {
 
 export default function Experience() {
     return (
-        <section className="relative z-20 bg-[#0a0a0a] py-32 px-4 md:px-12 border-t border-white/5 overflow-hidden">
-            {/* Background ambient glow */}
+        <section className="relative z-20 bg-white py-32 px-4 md:px-12 border-t border-black overflow-hidden">
+            {/* Background ambient glow - Professional Grey */}
             <motion.div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(139, 92, 246, 0.04), transparent 70%)" }}
-                animate={{ scale: [1, 1.3, 1] }}
+                style={{ background: "radial-gradient(circle, rgba(0, 0, 0, 0.015), transparent 70%)" }}
+                animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
 
@@ -52,17 +52,15 @@ export default function Experience() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="text-5xl md:text-7xl font-bold mb-20 tracking-tighter text-white text-center"
+                    className="text-6xl md:text-8xl font-bold mb-24 tracking-tighter text-black text-center uppercase"
                 >
-                    {"Career Timeline".split("").map((char, i) => (
+                    {"Experience".split("").map((char, i) => (
                         <motion.span
                             key={i}
-                            initial={{ opacity: 0, y: 30, rotateX: -60 }}
-                            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             transition={{
-                                type: "spring" as const,
-                                stiffness: 120,
-                                damping: 12,
+                                duration: 0.5,
                                 delay: i * 0.03,
                             }}
                             viewport={{ once: true }}
@@ -73,24 +71,21 @@ export default function Experience() {
                     ))}
                 </motion.h2>
 
-                <div className="relative ml-4 md:ml-0 md:pl-0 space-y-16">
-                    {/* Animated timeline line */}
+                <div className="relative ml-4 md:ml-0 md:pl-0 space-y-20">
+                    {/* Animated timeline line - Pure Black */}
                     <motion.div
                         variants={lineVariants}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="absolute left-0 top-0 bottom-0 w-[2px] origin-top"
-                        style={{
-                            background: "linear-gradient(to bottom, rgba(139,92,246,0.5), rgba(59,130,246,0.3), rgba(139,92,246,0.1))",
-                        }}
+                        className="absolute left-0 top-0 bottom-0 w-[2px] origin-top bg-black opacity-100"
                     />
 
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: -60, rotateY: -8 }}
-                            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             transition={{
                                 type: "spring" as const,
                                 stiffness: 70,
@@ -98,12 +93,11 @@ export default function Experience() {
                                 delay: index * 0.2,
                             }}
                             viewport={{ once: true }}
-                            className="relative pl-10 md:pl-14 group"
-                            style={{ perspective: "800px" }}
+                            className="relative pl-12 md:pl-16 group"
                         >
-                            {/* Animated timeline dot */}
+                            {/* Animated timeline dot - Pure Black */}
                             <motion.div
-                                className="absolute -left-[6px] top-2 w-3.5 h-3.5 rounded-full bg-purple-500 border-2 border-[#0a0a0a]"
+                                className="absolute -left-[6px] top-2 w-3.5 h-3.5 rounded-full bg-black border-2 border-white shadow-xl z-20"
                                 initial={{ scale: 0 }}
                                 whileInView={{ scale: 1 }}
                                 transition={{
@@ -113,51 +107,33 @@ export default function Experience() {
                                     delay: index * 0.2 + 0.3,
                                 }}
                                 viewport={{ once: true }}
-                            >
-                                {/* Pulsing ring */}
-                                <motion.div
-                                    className="absolute inset-0 rounded-full border border-purple-500/50"
-                                    animate={{ scale: [1, 2.5, 1], opacity: [0.5, 0, 0.5] }}
-                                    transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                                />
-                            </motion.div>
+                            />
 
                             {/* Card */}
                             <motion.div
                                 whileHover={{
-                                    scale: 1.02,
-                                    x: 8,
-                                    transition: { type: "spring" as const, stiffness: 300, damping: 20 },
+                                    x: 10,
+                                    transition: { duration: 0.4, ease: "easeOut" },
                                 }}
-                                className="relative rounded-xl bg-white/[0.03] border border-white/10 p-6 md:p-8 backdrop-blur-sm transition-all duration-500 hover:bg-white/[0.06] hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/5 overflow-hidden"
+                                className="relative rounded-3xl bg-white border-2 border-black p-10 transition-all duration-500 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
                             >
-                                {/* Shimmer effect */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{
-                                    background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.02) 45%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.02) 55%, transparent 60%)",
-                                    backgroundSize: "200% 100%",
-                                    animation: "shimmer 3s linear infinite",
-                                }} />
-
-                                {/* Top accent */}
-                                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
                                 <div className="relative z-10">
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={{ opacity: 0, x: -10 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: index * 0.2 + 0.4 }}
                                         viewport={{ once: true }}
-                                        className="text-xs text-purple-400/80 font-mono mb-3 uppercase tracking-[0.2em]"
+                                        className="text-[10px] text-black font-bold mb-6 uppercase tracking-[0.4em] bg-black text-white inline-block px-3 py-1"
                                     >
                                         {exp.period}
                                     </motion.div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-purple-100 transition-colors duration-300">
+                                    <h3 className="text-3xl font-bold text-black mb-2 uppercase tracking-tight">
                                         {exp.company}
                                     </h3>
-                                    <h4 className="text-lg text-gray-400 mb-4 group-hover:text-gray-300 transition-colors duration-300">
+                                    <h4 className="text-xl text-black/60 mb-8 font-medium uppercase tracking-widest italic">
                                         {exp.role}
                                     </h4>
-                                    <p className="text-gray-400 leading-relaxed max-w-2xl group-hover:text-gray-300 transition-colors duration-300">
+                                    <p className="text-black text-lg leading-relaxed max-w-2xl font-medium">
                                         {exp.description}
                                     </p>
                                 </div>

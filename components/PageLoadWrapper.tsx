@@ -21,33 +21,33 @@ export default function PageLoadWrapper({ children }: { children: React.ReactNod
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        {/* Animated rings */}
+                        {/* Animated rings - Monochromatic */}
                         <div className="relative flex items-center justify-center">
                             <motion.div
-                                className="absolute w-32 h-32 rounded-full border border-purple-500/30"
-                                animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.6, 0.3], rotate: [0, 180, 360] }}
+                                className="absolute w-32 h-32 rounded-full border border-white/20"
+                                animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.2, 0.4, 0.2], rotate: [0, 180, 360] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             />
                             <motion.div
-                                className="absolute w-48 h-48 rounded-full border border-blue-500/20"
-                                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2], rotate: [360, 180, 0] }}
+                                className="absolute w-48 h-48 rounded-full border border-white/10"
+                                animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1], rotate: [360, 180, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             />
                             <motion.div
-                                className="absolute w-64 h-64 rounded-full border border-orange-500/10"
-                                animate={{ scale: [1.1, 1.4, 1.1], opacity: [0.1, 0.3, 0.1], rotate: [0, -180, -360] }}
+                                className="absolute w-64 h-64 rounded-full border border-white/5"
+                                animate={{ scale: [1.1, 1.4, 1.1], opacity: [0.05, 0.2, 0.05], rotate: [0, -180, -360] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                             />
 
-                            {/* Center glow dot */}
+                            {/* Center glow dot - Monochromatic */}
                             <motion.div
-                                className="w-3 h-3 rounded-full bg-purple-500"
+                                className="w-2.5 h-2.5 rounded-full bg-white"
                                 animate={{
-                                    scale: [1, 1.8, 1],
+                                    scale: [1, 1.5, 1],
                                     boxShadow: [
-                                        "0 0 20px rgba(139,92,246,0.4)",
-                                        "0 0 60px rgba(139,92,246,0.8)",
-                                        "0 0 20px rgba(139,92,246,0.4)",
+                                        "0 0 15px rgba(255,255,255,0.3)",
+                                        "0 0 45px rgba(255,255,255,0.6)",
+                                        "0 0 15px rgba(255,255,255,0.3)",
                                     ],
                                 }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -55,38 +55,33 @@ export default function PageLoadWrapper({ children }: { children: React.ReactNod
 
                             {/* Initials text */}
                             <motion.span
-                                className="absolute mt-28 text-xs tracking-[0.4em] uppercase text-white/40 font-light"
-                                animate={{ opacity: [0.3, 0.8, 0.3] }}
+                                className="absolute mt-28 text-[10px] tracking-[0.5em] uppercase text-white/30 font-light"
+                                animate={{ opacity: [0.2, 0.6, 0.2] }}
                                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                             >
                                 BY
                             </motion.span>
                         </div>
 
-                        {/* Floating particles in loader */}
+                        {/* Floating particles in loader - Monochromatic */}
                         <div className="absolute inset-0 pointer-events-none overflow-hidden">
                             {[...Array(15)].map((_, i) => (
                                 <motion.div
                                     key={i}
-                                    className="absolute w-1 h-1 rounded-full"
+                                    className="absolute w-[1px] h-[1px] rounded-full bg-white/20"
                                     style={{
-                                        left: `${15 + Math.random() * 70}%`,
-                                        top: `${15 + Math.random() * 70}%`,
-                                        background: i % 3 === 0
-                                            ? "rgba(139,92,246,0.5)"
-                                            : i % 3 === 1
-                                                ? "rgba(59,130,246,0.4)"
-                                                : "rgba(249,115,22,0.3)",
+                                        left: `${Math.random() * 100}%`,
+                                        top: `${Math.random() * 100}%`,
                                     }}
                                     animate={{
-                                        y: [0, -(30 + Math.random() * 50), 0],
-                                        opacity: [0, 0.8, 0],
-                                        scale: [0, 1.5, 0],
+                                        y: [0, -(40 + Math.random() * 60), 0],
+                                        opacity: [0, 0.5, 0],
+                                        scale: [0, 1, 0],
                                     }}
                                     transition={{
-                                        duration: 3 + Math.random() * 3,
+                                        duration: 4 + Math.random() * 4,
                                         repeat: Infinity,
-                                        delay: Math.random() * 2,
+                                        delay: Math.random() * 3,
                                         ease: "easeInOut",
                                     }}
                                 />
