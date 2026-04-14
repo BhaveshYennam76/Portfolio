@@ -5,11 +5,11 @@ import Magnetic from "./Magnetic";
 
 const education = [
     {
-        degree: "Bachelor of Computer Applications (BCA)",
-        institution: "C.B. Patel Computer College, Vesu, Surat",
+        degree: "Bachelor of Computer Applications (BCA) (2023 – 2026)",
+        institution: "VNSG University Vesu, Surat, Gujarat",
         batch: "Batch of 2026",
         grade: "CGPA: 7.6 / 10",
-        description: "Affiliated with Veer Narmada South Gujarat University. Focusing on mobile app development and modern software engineering practices."
+        description: "Focusing on mobile app development and modern software engineering practices."
     },
     {
         degree: "H.S.C (12th Grade)",
@@ -43,7 +43,7 @@ export default function AboutEducation() {
                             
                             <div className="space-y-8 text-black/70 dark:text-white/70 text-lg md:text-xl leading-relaxed font-medium">
                                 <p>
-                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer pursuing a Bachelor of Computer Applications at C.B. Patel Computer College.
+                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer pursuing a Bachelor of Computer Applications at VNSG University Vesu, Surat, Gujarat.
                                 </p>
                                 <p>
                                     My journey is driven by a passion for <span className="text-black dark:text-white font-bold italic">Mobile Application Development</span>. As a Flutter Developer Intern at SaiKet Systems and Vege Development, I've honed my skills in building robust, high-performance cross-platform applications.
