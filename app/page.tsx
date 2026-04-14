@@ -1,4 +1,4 @@
-import ScrollyCanvas from "@/components/ScrollyCanvas";
+import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <SmoothScroll>
       <PageLoadWrapper>
-        <main className="bg-white min-h-screen">
-          <ScrollyCanvas />
+        <main className="bg-white dark:bg-black min-h-screen transition-colors duration-300">
+          <Hero />
           <AboutEducation />
           <Experience />
           <TechStack />

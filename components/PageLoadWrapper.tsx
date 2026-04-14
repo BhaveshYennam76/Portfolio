@@ -53,11 +53,14 @@ export default function PageLoadWrapper({ children }: { children: React.ReactNod
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                             />
 
-                            {/* Initials text */}
+                            {/* Initials text - Bolder Brand Presence */}
                             <motion.span
-                                className="absolute mt-28 text-[10px] tracking-[0.5em] uppercase text-white/30 font-light"
-                                animate={{ opacity: [0.2, 0.6, 0.2] }}
-                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute mt-32 text-xs tracking-[0.8em] uppercase text-white font-black"
+                                animate={{ 
+                                    opacity: [0.1, 0.4, 0.1],
+                                    letterSpacing: ["0.8em", "1.2em", "0.8em"]
+                                }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                             >
                                 BY
                             </motion.span>

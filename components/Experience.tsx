@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Magnetic from "./Magnetic";
 
 const experiences = [
     {
@@ -17,127 +18,56 @@ const experiences = [
     },
 ];
 
-const titleVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.9 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: { type: "spring" as const, stiffness: 80, damping: 14, duration: 0.8 },
-    },
-};
-
-const lineVariants = {
-    hidden: { scaleY: 0 },
-    visible: {
-        scaleY: 1,
-        transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-    },
-};
-
 export default function Experience() {
     return (
-        <section className="relative z-20 bg-white py-32 px-4 md:px-12 border-t border-black overflow-hidden">
-            {/* Background ambient glow - Professional Grey */}
-            <motion.div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0, 0, 0, 0.015), transparent 70%)" }}
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <div className="max-w-4xl mx-auto relative z-10">
-                <motion.h2
-                    variants={titleVariants}
-                    initial="hidden"
-                    whileInView="visible"
+        <section id="experience" className="relative z-20 bg-white dark:bg-black py-20 px-6 md:px-12 border-t border-black/5 dark:border-white/5 transition-colors duration-300 overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
+                <span className="text-[10px] font-black tracking-[0.6em] text-accent uppercase opacity-50 mb-12 block">
+                    02 // EXPERIENCE
+                </span>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-6xl md:text-8xl font-bold mb-24 tracking-tighter text-black text-center uppercase"
+                    className="flex flex-col items-center mb-24"
                 >
-                    {"Experience".split("").map((char, i) => (
-                        <motion.span
-                            key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.5,
-                                delay: i * 0.03,
-                            }}
-                            viewport={{ once: true }}
-                            className="inline-block"
-                        >
-                            {char === " " ? "\u00A0" : char}
-                        </motion.span>
-                    ))}
-                </motion.h2>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black dark:text-white uppercase text-center mb-4 leading-none">
+                        Work <span className="text-accent underline decoration-1 underline-offset-8 italic">Experience.</span>
+                    </h2>
+                    <p className="text-accent font-black uppercase tracking-[0.4em] text-[10px]">
+                        Professional Trajectory
+                    </p>
+                </motion.div>
 
-                <div className="relative ml-4 md:ml-0 md:pl-0 space-y-20">
-                    {/* Animated timeline line - Pure Black */}
-                    <motion.div
-                        variants={lineVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="absolute left-0 top-0 bottom-0 w-[2px] origin-top bg-black opacity-100"
-                    />
-
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: -40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{
-                                type: "spring" as const,
-                                stiffness: 70,
-                                damping: 15,
-                                delay: index * 0.2,
-                            }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                             viewport={{ once: true }}
-                            className="relative pl-12 md:pl-16 group"
+                            className="p-8 border border-black/5 dark:border-white/5 bg-secondary/30 dark:bg-secondary/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-500 group relative"
                         >
-                            {/* Animated timeline dot - Pure Black */}
-                            <motion.div
-                                className="absolute -left-[6px] top-2 w-3.5 h-3.5 rounded-full bg-black border-2 border-white shadow-xl z-20"
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                transition={{
-                                    type: "spring" as const,
-                                    stiffness: 300,
-                                    damping: 15,
-                                    delay: index * 0.2 + 0.3,
-                                }}
-                                viewport={{ once: true }}
-                            />
-
-                            {/* Card */}
-                            <motion.div
-                                whileHover={{
-                                    x: 10,
-                                    transition: { duration: 0.4, ease: "easeOut" },
-                                }}
-                                className="relative rounded-3xl bg-white border-2 border-black p-10 transition-all duration-500 hover:shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
-                            >
-                                <div className="relative z-10">
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.2 + 0.4 }}
-                                        viewport={{ once: true }}
-                                        className="text-[10px] text-black font-bold mb-6 uppercase tracking-[0.4em] bg-black text-white inline-block px-3 py-1"
-                                    >
-                                        {exp.period}
-                                    </motion.div>
-                                    <h3 className="text-3xl font-bold text-black mb-2 uppercase tracking-tight">
+                            <div className="absolute top-0 left-0 w-1 h-0 bg-accent transition-all duration-500 group-hover:h-full" />
+                            <div className="flex justify-between items-start mb-8">
+                                <div className="space-y-1">
+                                    <Magnetic>
+                                        <h3 className="text-2xl font-black text-black dark:text-white uppercase tracking-tighter group-hover:text-accent transition-colors">
+                                            {exp.role}
+                                        </h3>
+                                    </Magnetic>
+                                    <p className="text-sm font-black uppercase tracking-widest text-black/40 dark:text-white/40 italic">
                                         {exp.company}
-                                    </h3>
-                                    <h4 className="text-xl text-black/60 mb-8 font-medium uppercase tracking-widest italic">
-                                        {exp.role}
-                                    </h4>
-                                    <p className="text-black text-lg leading-relaxed max-w-2xl font-medium">
-                                        {exp.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-accent bg-accent/5 px-3 py-1 border border-accent/10">
+                                    {exp.period}
+                                </span>
+                            </div>
+                            <p className="text-black/60 dark:text-white/60 font-medium leading-relaxed">
+                                {exp.description}
+                            </p>
                         </motion.div>
                     ))}
                 </div>
@@ -145,3 +75,5 @@ export default function Experience() {
         </section>
     );
 }
+
+

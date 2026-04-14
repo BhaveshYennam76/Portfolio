@@ -1,249 +1,143 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+import Magnetic from "./Magnetic";
 
 const skillCategories = [
     {
         title: "Mobile Development",
         icon: "📱",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["Flutter", "Dart", "Android (Kotlin)", "Cross-Platform Apps", "iOS"],
+        skills: [
+            { name: "Flutter", level: 95 },
+            { name: "Dart", level: 90 },
+            { name: "Android (Kotlin)", level: 75 },
+            { name: "Cross-Platform", level: 90 },
+        ],
     },
     {
-        title: "Programming Languages",
+        title: "Programming",
         icon: "💻",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["Dart", "Java", "Kotlin", "C++"],
+        skills: [
+            { name: "Dart", level: 95 },
+            { name: "Java", level: 80 },
+            { name: "Kotlin", level: 75 },
+            { name: "C++", level: 65 },
+        ],
     },
     {
-        title: "Backend & Integration",
+        title: "Backend & DB",
         icon: "🔥",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["Firebase Auth", "Firestore", "Realtime DB", "REST APIs", "JSON"],
+        skills: [
+            { name: "Firebase", level: 90 },
+            { name: "Firestore", level: 85 },
+            { name: "REST APIs", level: 95 },
+            { name: "Node.js", level: 75 },
+        ],
     },
     {
-        title: "Architecture & State",
-        icon: "🏗️",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["Clean Architecture", "Provider", "MVVM"],
-    },
-    {
-        title: "UI/UX & Design",
-        icon: "🎨",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["UI/UX Design", "Responsive Design", "Material Design"],
-    },
-    {
-        title: "Tools & Platforms",
+        title: "Tools & Design",
         icon: "⚙️",
-        color: "from-white/5 to-white/[0.02]",
-        borderColor: "group-hover:border-white/20",
-        glowColor: "group-hover:shadow-white/5",
-        accentColor: "via-white/20",
-        skills: ["Android Studio", "VS Code", "GitHub", "Postman"],
+        skills: [
+            { name: "GitHub", level: 95 },
+            { name: "Android Studio", level: 95 },
+            { name: "VS Code", level: 90 },
+            { name: "Postman", level: 85 },
+            { name: "Figma", level: 75 },
+        ],
     },
 ];
 
 const containerVariants = {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
-        transition: {
-            staggerChildren: 0.15,
-        },
+        opacity: 1,
+        transition: { staggerChildren: 0.15 },
     },
 };
 
-const cardVariants = {
-    hidden: {
-        opacity: 0,
-        y: 80,
-        rotateX: -15,
-        scale: 0.85,
-    },
+const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
-        rotateX: 0,
-        scale: 1,
-        transition: {
-            type: "spring" as const,
-            stiffness: 100,
-            damping: 15,
-            mass: 0.8,
-        },
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
-};
-
-const skillVariants = {
-    hidden: { opacity: 0, scale: 0, y: 20 },
-    visible: (i: number) => ({
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        transition: {
-            type: "spring" as const,
-            stiffness: 200,
-            damping: 12,
-            delay: i * 0.06,
-        },
-    }),
 };
 
 export default function TechStack() {
     return (
-        <section className="relative z-20 bg-[#f8f9fa] py-32 px-4 md:px-12 border-t border-black/5 overflow-hidden">
-            {/* Subtle light mode grid */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
-                <div
-                    className="w-full h-full"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-                                          linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
-                        backgroundSize: "60px 60px",
-                    }}
-                />
-            </div>
-
-            {/* Ambient light orbs - Professional Grey */}
-            <motion.div
-                className="absolute top-20 left-10 w-72 h-72 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0, 0, 0, 0.02), transparent 70%)" }}
-                animate={{ x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
-                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-                className="absolute bottom-20 right-10 w-96 h-96 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(0, 0, 0, 0.015), transparent 70%)" }}
-                animate={{ x: [0, -50, 0], y: [0, 40, 0], scale: [1, 1.15, 1] }}
-                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <div className="max-w-6xl mx-auto relative z-10">
-                          <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+        <section id="skills" className="relative z-20 bg-white dark:bg-black py-20 px-6 md:px-12 border-t border-black/5 dark:border-white/5 transition-colors duration-300 overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
+                <span className="text-[10px] font-black tracking-[0.6em] text-accent uppercase opacity-50 mb-12 block">
+                    03 // SKILLS
+                </span>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-24"
+                    className="flex flex-col items-center mb-24"
                 >
-                    <motion.h2
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ type: "spring", stiffness: 80, damping: 12 }}
-                        viewport={{ once: true }}
-                        className="text-6xl md:text-8xl font-bold tracking-tighter text-black inline-block uppercase"
-                    >
-                        {"Tech Stack".split("").map((char, i) => (
-                            <motion.span
-                                key={i}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: i * 0.03,
-                                }}
-                                viewport={{ once: true }}
-                                className="inline-block"
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
-                    </motion.h2>
-                    <motion.div
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        viewport={{ once: true }}
-                        className="h-[2px] w-24 mx-auto mt-8 bg-black"
-                    />
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-black dark:text-white uppercase text-center mb-4 leading-none">
+                        Technical <span className="text-accent underline decoration-1 underline-offset-8 italic">Arsenal.</span>
+                    </h2>
+                    <p className="text-accent font-black uppercase tracking-[0.4em] text-[10px]">
+                        Tools of the trade
+                    </p>
                 </motion.div>
 
-                {/* Cards grid */}
-                <motion.div
+                <motion.div 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
                 >
                     {skillCategories.map((category, index) => (
                         <motion.div
                             key={index}
                             variants={cardVariants}
-                            whileHover={{
-                                y: -10,
-                                transition: { duration: 0.4, ease: "easeOut" },
-                            }}
-                            className="group relative rounded-3xl bg-white border-2 border-black p-10 transition-all duration-500 hover:shadow-[20px_20px_0px_0px_rgba(0,0,0,1)] cursor-default overflow-hidden"
+                            className="p-8 border border-black/5 dark:border-white/5 bg-secondary/30 dark:bg-secondary/10 hover:border-black/20 dark:hover:border-white/20 transition-all duration-500 group"
                         >
-                            {/* Colorful background hover effect */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${index % 3 === 0 ? "from-blue-500 to-purple-500" : index % 3 === 1 ? "from-green-500 to-teal-500" : "from-orange-500 to-red-500"}`} />
-
-                            <div className="relative z-10">
-                                {/* Icon - Always Colorful */}
-                                <div className="text-4xl mb-8 group-hover:scale-110 transition-all duration-500">
+                            <Magnetic>
+                                <motion.div 
+                                    className="text-3xl mb-8 group-hover:scale-125 transition-transform duration-500 origin-left"
+                                >
                                     {category.icon}
-                                </div>
-
-                                <h3 className="text-xs font-bold tracking-[0.4em] uppercase text-black mb-8 group-hover:tracking-[0.5em] transition-all duration-500">
-                                    {category.title}
-                                </h3>
-
-                                <div className="flex flex-wrap gap-3">
-                                    {category.skills.map((skill, skillIndex) => (
-                                        <motion.span
-                                            key={skillIndex}
-                                            variants={skillVariants}
-                                            custom={skillIndex}
-                                            className="px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-black bg-white border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-default select-none"
-                                        >
-                                            {skill}
-                                        </motion.span>
-                                    ))}
-                                </div>
+                                </motion.div>
+                            </Magnetic>
+                            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-accent mb-10">
+                                {category.title}
+                            </h3>
+                            
+                            <div className="space-y-6">
+                                {category.skills.map((skill, i) => (
+                                    <div key={i} className="space-y-2">
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-black/60 dark:text-white/60">
+                                                {skill.name}
+                                            </span>
+                                            <span className="text-[9px] font-bold text-accent">
+                                                {skill.level}%
+                                            </span>
+                                        </div>
+                                        <div className="h-[2px] w-full bg-black/5 dark:bg-white/5 relative overflow-hidden">
+                                            <motion.div
+                                                initial={{ scaleX: 0 }}
+                                                whileInView={{ scaleX: skill.level / 100 }}
+                                                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                                                viewport={{ once: true }}
+                                                className="absolute inset-0 bg-black dark:bg-white origin-left"
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </motion.div>
                     ))}
                 </motion.div>
-
-                {/* Subdued professional particles */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    {[...Array(10)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-1 h-1 rounded-full bg-black/5"
-                            style={{
-                                left: `${10 + Math.random() * 80}%`,
-                                top: `${10 + Math.random() * 80}%`,
-                            }}
-                            animate={{
-                                y: [0, -(30 + Math.random() * 50), 0],
-                                opacity: [0, 0.4, 0],
-                            }}
-                            transition={{
-                                duration: 8 + Math.random() * 10,
-                                repeat: Infinity,
-                                delay: Math.random() * 10,
-                                ease: "easeInOut",
-                            }}
-                        />
-                    ))}
-                </div>
             </div>
         </section>
     );
 }
+
+

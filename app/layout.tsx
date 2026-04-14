@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import { Providers } from "@/components/Providers";
+import Navbar from "@/components/Navbar";
 
 const CustomCursor = dynamic(() => import("@/components/CustomCursor"), {
   ssr: false,
@@ -41,15 +43,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        {/* Cinematic Grain Overlay */}
-        <div className="fixed inset-0 z-[99999] pointer-events-none opacity-[0.03] animate-grain" 
-             style={{ backgroundImage: 'url("https://res.cloudinary.com/dzv9rqshl/image/upload/v1624445915/grain_bg.png")' }} />
-        
-        <CustomCursor />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased bg-white dark:bg-black transition-colors duration-300`}>
+        <Providers>
+          <CustomCursor />
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
 }
+
