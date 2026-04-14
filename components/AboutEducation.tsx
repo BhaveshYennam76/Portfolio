@@ -6,7 +6,8 @@ import Magnetic from "./Magnetic";
 const education = [
     {
         degree: "Bachelor of Computer Applications (BCA) (2023 – 2026)",
-        institution: "VNSG University Vesu, Surat, Gujarat",
+        institution: "Veer Narmad South Gujarat University",
+        link: "http://www.vnsgu.ac.in/",
         batch: "Batch of 2026",
         grade: "CGPA: 7.6 / 10",
         description: "Focusing on mobile app development and modern software engineering practices."
@@ -43,7 +44,7 @@ export default function AboutEducation() {
                             
                             <div className="space-y-8 text-black/70 dark:text-white/70 text-lg md:text-xl leading-relaxed font-medium">
                                 <p>
-                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer pursuing a Bachelor of Computer Applications at VNSG University Vesu, Surat, Gujarat.
+                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer pursuing a Bachelor of Computer Applications at <a href="http://www.vnsgu.ac.in/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Veer Narmad South Gujarat University</a>.
                                 </p>
                                 <p>
                                     My journey is driven by a passion for <span className="text-black dark:text-white font-bold italic">Mobile Application Development</span>. As a Flutter Developer Intern at SaiKet Systems and Vege Development, I've honed my skills in building robust, high-performance cross-platform applications.
@@ -115,7 +116,9 @@ export default function AboutEducation() {
                                             {edu.degree}
                                         </h3>
                                         <p className="text-sm text-black/40 dark:text-white/40 font-bold uppercase mb-4">
-                                            {edu.institution} • <span className="text-black/60 dark:text-white/60">{edu.grade}</span>
+                                            <a href={edu.link} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                                                {edu.institution}
+                                            </a> • <span className="text-black/60 dark:text-white/60">{edu.grade}</span>
                                         </p>
                                         <p className="text-black/60 dark:text-white/60 font-medium leading-relaxed max-w-sm">
                                             {edu.description}
