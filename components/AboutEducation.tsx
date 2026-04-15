@@ -44,7 +44,7 @@ export default function AboutEducation() {
                             
                             <div className="space-y-8 text-black/70 dark:text-white/70 text-lg md:text-xl leading-relaxed font-medium">
                                 <p>
-                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer pursuing a Bachelor of Computer Applications at <a href="http://www.vnsgu.ac.in/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Veer Narmad South Gujarat University</a>.
+                                    Hi, I'm <span className="text-black dark:text-white font-black underline decoration-1 underline-offset-4">Bhavesh Yennam</span>, a detail-oriented developer with a Bachelor of Computer Applications degree from <a href="http://www.vnsgu.ac.in/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Veer Narmad South Gujarat University</a>.
                                 </p>
                                 <p>
                                     My journey is driven by a passion for <span className="text-black dark:text-white font-bold italic">Mobile Application Development</span>. As a Flutter Developer Intern at SaiKet Systems and Vege Development, I've honed my skills in building robust, high-performance cross-platform applications.
